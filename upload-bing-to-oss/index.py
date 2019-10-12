@@ -9,12 +9,14 @@ baseUrl = 'https://cn.bing.com'
 auth = oss2.Auth('<yourAccessKeyId>', '<yourAccessKeySecret>')
 bucket = oss2.Bucket(auth, '<yourEndpoint>', '<yourBucketName>')
 
+
 def fetch():
-	res = requests.get(fetchUrl).json()
-	data = res['images'][0]
-	url = baseUrl + data['url']
-	key = data['enddate']
-	return key, url
+    res = requests.get(fetchUrl).json()
+    data = res['images'][0]
+    url = baseUrl + data['url']
+    key = data['enddate']
+    return key, url
+
 
 def handler(event, context):
     logger = logging.getLogger()
